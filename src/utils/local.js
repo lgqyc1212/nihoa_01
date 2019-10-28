@@ -4,6 +4,7 @@ const KEY = 'Ni-Hao-00'
 const local = {
   // 存储
   setUser (user) {
+    // 把user对象转换成json字符串
     const jsonStr = JSON.stringify(user)
     window.sessionStorage.setItem(KEY, jsonStr)
   },

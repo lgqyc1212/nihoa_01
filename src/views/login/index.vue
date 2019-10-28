@@ -41,7 +41,7 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '',
+        mobile: '13011111111',
         code: '246810'
       },
       loginRules: {
@@ -71,7 +71,7 @@ export default {
             .then(res => {
               // 成功
               // 保存用户信息（token）
-              local.$router.push(res.data.data)
+              local.setUser(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {
