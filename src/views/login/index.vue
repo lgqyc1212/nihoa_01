@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     //   rule:当前字段的校验规则 value callback
@@ -69,6 +70,8 @@ export default {
             .post('authorizations', this.loginForm)
             .then(res => {
               // 成功
+              // 保存用户信息（token）
+              local.$router.push(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {
