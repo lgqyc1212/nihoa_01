@@ -2,27 +2,36 @@
 import axios from 'axios'
 import local from '@/utils/local'
 import router from '@/router'
+import JSONBIG from 'json-bigint'
 
 // 对axios进行配置
 // 基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 
-// 请求拦截
+axios.defaults.transformResponse = [(data) => {
+  // 对data进行格式转换 data 就是后台响应的json字符串
+  // 如果没有数据  data === null 使用JSONBUIG.parse(null)报错
+  try {
+    return JSONBIG.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
+
+// 设置默认的请求头
+// if (local.getUser()) {
+//   axios.defaults.headers.Authorization = `Bearer ${local.getUser().token}`
+// }
+// 请求拦截拦截
 axios.interceptors.request.use((config) => {
+  // 在发送请求之前做些什么
 // 拦截成功 往headers中加token
   const user = local.getUser() || {}
-  config.headers.Authorization = `Bearer${user.token}`
+  // config.headers设置头   Authorization 键
+  config.headers.Authorization = `Bearer ${user.token}`
   return config
 }, (err) => {
   return Promise.reject(err)
-})
-
-// 添加响应拦截器
-axios.interceptors.response.use(function (response) {
-// 根据数据做出相应的反应
-  return response
-}, function (error) {
-  return Promise.reject(error)
 })
 
 // 响应拦截器

@@ -7,7 +7,7 @@
        <!-- $router 调用函数
       $route 获取路由属性：它还包括query传参，和params传参 -->
       <el-menu
-        default-active="$route.path"
+        :default-active="$route.path"
         background-color="#002033"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -106,6 +106,7 @@ export default {
     }
   },
   created () {
+    // 显示用户信息
     const user = local.getUser() || {}
     this.userInfo.name = user.name
     this.userInfo.photo = user.photo

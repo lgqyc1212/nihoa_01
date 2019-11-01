@@ -2,12 +2,13 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 
 import Login from '@/views/login'
-
 import Home from '@/views/home'
 import Welcome from '@/views/welcome'
-import NotFound from '@/views/404'
 import Article from '@/views/article'
+import Image from '@/views/Image'
+import Publish from '@/views/publish'
 
+import NotFound from '@/views/404'
 import local from '@/utils/local'
 
 Vue.use(VueRouter)
@@ -26,6 +27,14 @@ const router = new VueRouter({
     {
       path: '/article',
       component: Article
+    },
+    {
+      path: '/image',
+      component: Image
+    },
+    {
+      path: '/publish',
+      component: Publish
     }
     ]
   },

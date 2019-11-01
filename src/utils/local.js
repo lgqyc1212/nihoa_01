@@ -1,5 +1,5 @@
 // 提供 存储用户的相关信息的相关API
-// 约定：key = Ni-Hao-00
+// 约定：key = Ni-Hao-00  存储用户信息的唯一标识
 const KEY = 'Ni-Hao-00'
 const local = {
   // 存储
