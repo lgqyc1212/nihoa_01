@@ -77,12 +77,16 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus'
 import local from '@/utils/local'
 export default {
   data () {
     return {
       isOpen: true,
-      userInfo: {}
+      userInfo: {
+        name: null,
+        photo: ''
+      }
     }
   },
   methods: {
@@ -95,6 +99,7 @@ export default {
       this.$router.push('/setting')
     },
     logout () {
+      // 清除个人信息
       local.delUser()
       this.$router.push('/login')
     },
@@ -107,9 +112,17 @@ export default {
   },
   created () {
     // 显示用户信息
+    // 判断用户信息是否携带token值
     const user = local.getUser() || {}
     this.userInfo.name = user.name
     this.userInfo.photo = user.photo
+    // 绑定提交用户名称的事件
+    eventBus.$on('updateName', (name) => {
+      this.userInfo.name = name
+    })
+    eventBus.$on('updatePhoto', (photo) => {
+      this.userInfo.photo = photo
+    })
   }
 }
 </script>
