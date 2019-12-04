@@ -17,6 +17,5 @@ const local = {
   delUser () {
     window.sessionStorage.removeItem(KEY)
   }
-
 }
 export default local

@@ -8,6 +8,7 @@ import JSONBIG from 'json-bigint'
 // 基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 
+// 解决最大安全值
 axios.defaults.transformResponse = [(data) => {
   // 对data进行格式转换 data 就是后台响应的json字符串
   // 如果没有数据  data === null 使用JSONBUIG.parse(null)报错

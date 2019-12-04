@@ -97,6 +97,9 @@ export default {
     // 修改用户头像
     // ({ file }) 解构赋值
     async uploadphoto ({ file }) {
+      // 阿里百秀 自己来上传图片，使用xhr配合formData进行图片上传
+      // 现在     自己来上传图片，使用axios配合formData进行图片上传
+      // 获取图片对象  data.file 获取
       // result.file 是你选着图片后的文件对象
       // 获取文件对象  文档没有记录
       const formData = new FormData()
